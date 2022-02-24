@@ -1,0 +1,111 @@
+
+<html>
+<head>
+  <meta charset="utf-8">
+</head>
+<body>
+    
+    <div style="display: block">
+        <h1>Cadastro de Pessoa</h1>
+    </div>
+    <div>
+        <form action= "dado.php" method= "POST" style="display: flex;flex-direction: row"> <!-- informações são enviadas pro script (dados.php) de forma invisivel, todos esses dados serão incorporados e passados pro dados.php -->
+            <div>
+                Nome: <input type = "text" name= "nome"> <br>
+                CPF: <input type = "text" name= "cpf"> <br>
+                
+            </div>
+            <div>
+
+                <table border="1px">
+                    <thead>
+                        <tr>
+                            <th>
+                                Telefone
+                            </th>
+                            <th>
+                                Descrição do Telefone
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                Telefone 1: <input type = "text" name= "t1"> <br>
+                            </td>
+                            <td>
+                               <input type = "text" name= "d1"> <br>
+                           </td>
+                       </tr>
+                       <tr>
+                        <td>
+                            Telefone 2: <input type = "text" name= "t2"> <br>
+                        </td>
+                        <td>
+                           <input type = "text" name= "d2"> <br>
+                       </td>
+                   </tr>
+                   <tr>
+                    <td>
+                        Telefone 3: <input type = "text" name= "t3"> <br>
+                    </td>
+                    <td>
+                       <input type = "text" name= "d3"> <br>
+                   </td>
+               </tr>
+               <tr>
+                <td>
+                    Telefone 4: <input type = "text" name= "t4"> <br>
+                </td>
+                <td>
+                   <input type = "text" name= "d4"> <br>
+               </td>
+           </tr>
+           <tr>
+            <td>
+                Telefone 5: <input type = "text" name= "t5"> <br>
+            </td>
+            <td>
+                <input type = "text" name= "d5"> <br>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<br>
+<br>
+<button type="submit" name = "gravou">Gravar </button>
+
+</div>
+
+</form>
+</div>
+<hr>
+
+<?php if(!empty($usuario)){ ?> <!-- so printa a tabela se tiver alguem guardado em usuario -->
+<table border>
+
+  <thead>
+    <h2> Dados Gravados </h2>
+      <tr> 
+          <th> Nome </th>
+          <th> CPF </th>
+       <th> Telefone - Descrição </th> 
+      </tr>
+      
+      <?php foreach($usuario as $novo){ ?>
+        <tr>
+            <td><?php echo $novo->getNome(); ?> </td>
+            <td><?php echo $novo->getCPF(); ?> </td>
+            <td>
+        <?php foreach($novo->getTelefones() as $cels) echo  $cels ."<br>"; ?>
+        </td>
+        </tr>
+        
+      <?php } ?>
+    
+      </thead>
+    </table>
+    <?php } ?> 
+</body>
+</html>
